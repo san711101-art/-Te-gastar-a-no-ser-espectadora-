@@ -1,0 +1,96 @@
+<script>
+
+const noBtn = document.getElementById("noBtn");
+const yesBtn = document.getElementById("yesBtn");
+const content = document.getElementById("content");
+
+/* Hacer que NO huya */
+noBtn.addEventListener("mouseover",()=>{
+noBtn.style.left = Math.random()*80 + "vw";
+noBtn.style.top = Math.random()*80 + "vh";
+});
+
+/* Función transición */
+function cambiarContenido(nuevoHTML){
+content.classList.add("fade-out");
+
+setTimeout(()=>{
+content.innerHTML = nuevoHTML;
+content.classList.remove("fade-out");
+content.classList.add("fade-in");
+
+setTimeout(()=>{
+content.classList.remove("fade-in");
+},500);
+
+},500);
+}
+
+/* Si presiona SÍ primera vez */
+yesBtn.addEventListener("click",()=>{
+
+cambiarContenido(`
+<h1>¿Por qué?</h1>
+<div class="optionsContainer">
+<button class="optionBtn" id="loveBtn">Porque te quiero</button>
+<button class="optionBtn" id="idkBtn">No sé</button>
+</div>
+`);
+
+noBtn.style.display="none";
+yesBtn.style.display="none";
+
+setTimeout(()=>{
+document.getElementById("idkBtn").onclick = ()=>{
+window.close();
+};
+
+document.getElementById("loveBtn").onclick = ()=>{
+mostrarPoema();
+};
+},600);
+
+});
+
+/* Mostrar poema */
+function mostrarPoema(){
+
+cambiarContenido(`
+<div class="poem">
+En la inmensidad del cielo nocturno, donde las estrellas danzan sin cesar,
+siento tu presencia, aunque la distancia nos quiera separar.
+Como la luna, serena y brillante, iluminas mis noches lejanas,
+en este universo vasto e infinito, donde nuestras almas se aman.
+Tus ojos, dos luceros que me cautivan con su brillo singular,
+a pesar de la distancia, su luz me sigue a donde quiera que vaya a parar.
+Tu sonrisa, un amanecer radiante que cruza océanos y montañas,
+en cada recuerdo encuentro la fuerza para superar cualquier hazaña.
+Eres mi sol, la fuente de calor que siento aunque estés lejos de aquí,
+mi luna, la confidente silenciosa que escucha mis pensamientos sin fin.
+Eres mi universo entero, un cosmos que la distancia no puede extinguir,
+en cada latido de mi corazón, te siento cerca, mi amor, mi existir.
+En la danza cósmica de nuestro amor, somos dos almas entrelazadas,
+unidas por un hilo invisible que las estrellas han trazado.
+Que la distancia sea solo una prueba de este querer inmenso y profundo,
+un amor que trasciende fronteras y tiempos, eterno y rotundo.
+Cada noche, bajo el manto estelar, te envío mis sueños y anhelos,
+esperando el día en que la distancia se convierta en solo un recuerdo.
+Eres mi musa, mi inspiración, la melodía que resuena en mi ser,
+en este viaje de amor a través del universo, siempre te voy a querer.
+Eres la constelación que guía mis pasos en la oscuridad,
+la supernova que ilumina mi esperanza con intensidad.
+En cada rincón del universo, te busco y te encuentro, mi amor,
+unidos para siempre, a pesar de la distancia, en este eterno resplandor siempre te amaré...
+</div>
+`);
+
+setTimeout(()=>{
+document.body.classList.add("whiteout");
+setTimeout(()=>{
+window.close();
+},4000);
+},240000);
+
+}
+
+</script>
