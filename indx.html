@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>✨ Algo Especial ✨</title>
+
+<style>
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Comic Sans MS', cursive;
+}
+
+body{
+height:100vh;
+overflow:hidden;
+background:linear-gradient(180deg,#ff9ad5,#b266ff);
+display:flex;
+justify-content:center;
+align-items:center;
+text-align:center;
+color:white;
+transition:2s;
+}
+
+/* Brillo final */
+.whiteout{
+background:white !important;
+color:white;
+}
+
+/* Contenedor */
+.section{
+width:90%;
+max-width:700px;
+}
+
+/* Pregunta */
+h1{
+margin-bottom:40px;
+font-size:28px;
+}
+
+/* Botones base */
+button{
+position:absolute;
+padding:12px 25px;
+border:none;
+border-radius:25px;
+font-size:16px;
+cursor:pointer;
+transition:0.3s;
+}
+
+/* Botón NO */
+#noBtn{
+bottom:40px;
+left:40px;
+background:#ff4d88;
+color:white;
+}
+
+/* Botón SI */
+#yesBtn{
+bottom:40px;
+right:40px;
+background:white;
+color:#b266ff;
+box-shadow:0 0 10px white;
+animation:glow 1.5s infinite alternate;
+}
+
+@keyframes glow{
+from{box-shadow:0 0 10px white;}
+to{box-shadow:0 0 25px white;}
+}
+
+/* Segunda pantalla botones */
+.optionBtn{
+position:static;
+margin:20px 40px;
+background:white;
+color:#b266ff;
+}
+
+.optionsContainer{
+display:flex;
+justify-content:space-between;
+margin-top:60px;
+}
+
+/* Texto largo */
+.poem{
+white-space:pre-line;
+max-height:80vh;
+overflow-y:auto;
+padding:20px;
+}
+</style>
+</head>
+
+<body>
+
+<div id="content" class="section">
+<h1>¿Quieres no ser espectadora esta vez?</h1>
+</div>
+
+<button id="noBtn">No</button>
+<button id="yesBtn">Sí</button>
+
+<script>
+
+const noBtn = document.getElementById("noBtn");
+const yesBtn = document.getElementById("yesBtn");
+const content = document.getElementById("content");
+
+/* Hacer que NO huya */
+noBtn.addEventListener("mouseover",()=>{
+noBtn.style.left = Math.random()*80 + "vw";
+noBtn.style.top = Math.random()*80 + "vh";
+});
+
+/* Si presiona SÍ primera vez */
+yesBtn.addEventListener("click",()=>{
+content.innerHTML = `
+<h1>¿Por qué?</h1>
+<div class="optionsContainer">
+<button class="optionBtn" id="loveBtn">Porque te quiero</button>
+<button class="optionBtn" id="idkBtn">No sé</button>
+</div>
+`;
+noBtn.style.display="none";
+yesBtn.style.display="none";
+
+document.getElementById("idkBtn").onclick = ()=>{
+window.close();
+};
+
+document.getElementById("loveBtn").onclick = ()=>{
+mostrarPoema();
+};
+});
+
+/* Mostrar poema */
+function mostrarPoema(){
+content.innerHTML = `
+<div class="poem">
+En la inmensidad del cielo nocturno, donde las estrellas danzan sin cesar,
+siento tu presencia, aunque la distancia nos quiera separar.
+Como la luna, serena y brillante, iluminas mis noches lejanas,
+en este universo vasto e infinito, donde nuestras almas se aman.
+Tus ojos, dos luceros que me cautivan con su brillo singular,
+a pesar de la distancia, su luz me sigue a donde quiera que vaya a parar.
+Tu sonrisa, un amanecer radiante que cruza océanos y montañas,
+en cada recuerdo encuentro la fuerza para superar cualquier hazaña.
+Eres mi sol, la fuente de calor que siento aunque estés lejos de aquí,
+mi luna, la confidente silenciosa que escucha mis pensamientos sin fin.
+Eres mi universo entero, un cosmos que la distancia no puede extinguir,
+en cada latido de mi corazón, te siento cerca, mi amor, mi existir.
+En la danza cósmica de nuestro amor, somos dos almas entrelazadas,
+unidas por un hilo invisible que las estrellas han trazado.
+Que la distancia sea solo una prueba de este querer inmenso y profundo,
+un amor que trasciende fronteras y tiempos, eterno y rotundo.
+Cada noche, bajo el manto estelar, te envío mis sueños y anhelos,
+esperando el día en que la distancia se convierta en solo un recuerdo.
+Eres mi musa, mi inspiración, la melodía que resuena en mi ser,
+en este viaje de amor a través del universo, siempre te voy a querer.
+Eres la constelación que guía mis pasos en la oscuridad,
+la supernova que ilumina mi esperanza con intensidad.
+En cada rincón del universo, te busco y te encuentro, mi amor,
+unidos para siempre, a pesar de la distancia, en este eterno resplandor siempre te amaré...
+</div>
+`;
+
+setTimeout(()=>{
+document.body.classList.add("whiteout");
+setTimeout(()=>{
+window.close();
+},4000);
+},240000); // 4 minutos
+}
+
+</script>
+
+</body>
+</html>
