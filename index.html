@@ -3,230 +3,114 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>✨ Algo Especial ✨</title>
+<title>Algo Especial ✨</title>
 
 <style>
 *{
-margin:0;
-padding:0;
-box-sizing:border-box;
-font-family:'Comic Sans MS', cursive;
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Comic Sans MS', cursive;
 }
 
 body{
-height:100vh;
-overflow:hidden;
-background:linear-gradient(180deg,#0f0c29,#302b63,#24243e);
-color:white;
-display:flex;
-justify-content:center;
-align-items:center;
-text-align:center;
-transition:1s;
-}
-
-/* Estrellas */
-.star{
-position:absolute;
-width:2px;
-height:2px;
-background:white;
-animation:twinkle 2s infinite alternate;
-}
-
-@keyframes twinkle{
-from{opacity:0.2;}
-to{opacity:1;}
+    height:100vh;
+    overflow:hidden;
+    background:linear-gradient(180deg,#0f0c29,#302b63,#24243e);
+    color:white;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    text-align:center;
 }
 
 /* Luna */
 .moon{
-position:absolute;
-top:10%;
-right:10%;
-width:120px;
-height:120px;
-background:#f5f3ce;
-border-radius:50%;
-box-shadow:0 0 40px #fff;
-animation:floatMoon 6s ease-in-out infinite;
+    position:absolute;
+    top:80px;
+    right:120px;
+    width:120px;
+    height:120px;
+    background:white;
+    border-radius:50%;
+    box-shadow:0 0 40px white;
 }
 
-@keyframes floatMoon{
-0%,100%{transform:translateY(0);}
-50%{transform:translateY(15px);}
+/* Estrellas */
+.star{
+    position:absolute;
+    width:4px;
+    height:4px;
+    background:white;
+    border-radius:50%;
+    animation:blink 2s infinite alternate;
 }
 
-/* Secciones */
+@keyframes blink{
+    from{opacity:0.3;}
+    to{opacity:1;}
+}
+
+/* Sección */
 .section{
-position:absolute;
-width:100%;
-height:100%;
-display:flex;
-flex-direction:column;
-justify-content:center;
-align-items:center;
-padding:20px;
+    z-index:10;
 }
 
-.hidden{
-opacity:0;
-pointer-events:none;
-}
-
-/* Títulos */
-h1{
-font-size:6vw;
-margin-bottom:30px;
+.section h1{
+    margin-bottom:25px;
+    font-size:28px;
 }
 
 /* Botones */
+.buttons{
+    display:flex;
+    justify-content:center;
+    gap:40px; /* espacio entre botones */
+}
+
 button{
-padding:15px 30px;
-font-size:5vw;
-max-font-size:25px;
-border:none;
-border-radius:30px;
-cursor:pointer;
-margin:15px;
-transition:0.3s;
+    padding:12px 30px;
+    border:none;
+    border-radius:25px;
+    background:white;
+    color:#24243e;
+    font-size:16px;
+    cursor:pointer;
+    transition:0.3s;
 }
 
-#si1,#si2{
-background:#ff4fa3;
-color:white;
-}
-
-#no1,#no2{
-background:#555;
-color:white;
-position:absolute;
-}
-
-/* Corazón estilo Minecraft */
-.heart{
-position:relative;
-width:200px;
-height:200px;
-background:red;
-transform:rotate(-45deg);
-margin-bottom:30px;
-}
-
-.heart::before,
-.heart::after{
-content:"";
-width:200px;
-height:200px;
-background:red;
-border-radius:50%;
-position:absolute;
-}
-
-.heart::before{top:-100px;left:0;}
-.heart::after{left:100px;top:0;}
-
-.message{
-max-width:90%;
-font-size:4vw;
-}
-
-/* Pantalla rota */
-.crack{
-position:absolute;
-width:100%;
-height:100%;
-background:black;
-animation:break 1s forwards;
-z-index:999;
-}
-
-@keyframes break{
-to{opacity:1;}
+button:hover{
+    transform:scale(1.1);
+    background:#ffd1dc;
 }
 </style>
 </head>
 
 <body>
-  <audio autoplay loop>
-  <source src="enamorado-tuyo.mp3" type="audio/mpeg">
-</audio>
 
 <div class="moon"></div>
 
-<div class="moon"></div>
-
-<!-- Página 1 -->
-<div id="page1" class="section">
-<h1>¿Te gustaría no ser espectadora?</h1>
-<button id="si1">Sii</button>
-<button id="no1">No</button>
-</div>
-
-<!-- Página 2 -->
-<div id="page2" class="section hidden">
-<h1>¿Por qué?</h1>
-<button id="si2">Porque te quiero</button>
-<button id="no2">No sé</button>
-</div>
-
-<!-- Página 3 -->
-<div id="page3" class="section hidden">
-<div class="heart"></div>
-<div class="message">
-Eres tan hermosa al igual que la luna, amo tanto hablar contigo al igual de como amo las estrellas, eres tan calmada y tan agradable como un libro romántico en verano, te quiero muchote 💖
-</div>
-</div>
-
-<!-- Música -->
-<iframe width="0" height="0" 
-src="https://www.youtube.com/embed/YOUTUBE_ID?autoplay=1&loop=1&playlist=YOUTUBE_ID" 
-frameborder="0" allow="autoplay">
-</iframe>
-
+<!-- Estrellas -->
 <script>
-
-/* Crear estrellas */
-for(let i=0;i<100;i++){
-let star=document.createElement("div");
-star.className="star";
-star.style.left=Math.random()*100+"vw";
-star.style.top=Math.random()*100+"vh";
-star.style.animationDuration=(Math.random()*3+1)+"s";
-document.body.appendChild(star);
+for(let i=0;i<60;i++){
+    let star=document.createElement("div");
+    star.className="star";
+    star.style.top=Math.random()*100+"vh";
+    star.style.left=Math.random()*100+"vw";
+    star.style.animationDuration=(Math.random()*2+1)+"s";
+    document.body.appendChild(star);
 }
-
-/* Botón No huye */
-let size=5;
-let no1=document.getElementById("no1");
-let si1=document.getElementById("si1");
-
-no1.addEventListener("mouseover",()=>{
-no1.style.left=Math.random()*80+"%";
-no1.style.top=Math.random()*80+"%";
-size+=1;
-si1.style.transform=`scale(${1+size*0.1})`;
-});
-
-/* Cambios de página */
-si1.onclick=()=>{
-page1.classList.add("hidden");
-page2.classList.remove("hidden");
-};
-
-si2.onclick=()=>{
-page2.classList.add("hidden");
-page3.classList.remove("hidden");
-};
-
-no2.onclick=()=>{
-let crack=document.createElement("div");
-crack.className="crack";
-document.body.appendChild(crack);
-setTimeout(()=>window.close(),1000);
-};
-
 </script>
+
+<!-- Contenido -->
+<div class="section">
+    <h1>¿Te gustaría no ser espectadora?</h1>
+
+    <div class="buttons">
+        <button>Sí</button>
+        <button>No</button>
+    </div>
+</div>
 
 </body>
 </html>
